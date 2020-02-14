@@ -40,3 +40,4 @@ legend_handles = [Line2D([0], [0], linestyle="none", marker="o", alpha=0.6,
 
 plt.legend(legend_handles, legend.keys(), numpoints=1, fontsize=12, loc="best")
 plt.text(3, 35, 'India')
+plt.show()
