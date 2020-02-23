@@ -15,10 +15,9 @@ pd.set_option('display.max_columns', None)
 # 3. Support Vector Classification
 # 4. Gaussian Naive Bayes
 
+# 1. Preliminary data analysis
 # For this exercise we are going to use the Iris plants dataset:
 iris = datasets.load_iris()
-
-# 1. Preliminary data analysis
 type(iris)
 # Dataset is of type Bunch, as we learned in this week's exercises
 
@@ -31,7 +30,7 @@ print(iris.data.shape)
 df_X = pd.DataFrame(iris.data, columns=iris.feature_names)
 df_y = pd.DataFrame(iris.target, columns=['Class'])
 
-# sum summary statistics and
+# Some summary statistics:
 df_y.info()
 df_y.describe()
 
@@ -99,7 +98,7 @@ print('Accuracy: ', knn.score(X_test, y_test))
 # print('Precision: ', precision_score(y_test, y_pred_knn, average='micro'))
 # print('Recall: ', recall_score(y_test, y_pred_knn, average='micro'))
 
-# Similar to the lessons we are going to look for the best amount of neighbours, looping from 1 until 8
+# Similar to the lessons we are going to look for the best amount of neighbours, looping from 1 until 40
 neighbors = np.arange(1, 40)
 train_acc = np.empty(len(neighbors))
 test_acc = np.empty(len(neighbors))
