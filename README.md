@@ -11,7 +11,7 @@ This repo will also host the code of the <b>final project</b> of the course.
 - How to use Git
     - Using the CMD and using a GUI (like GitHub Desktop)
     - Using a remote repo (on GitHub for example) and collaborate with other coders
-    - How to use .gitignore
+    - Using some useful features like .gitignore
 - Coding in python
     - Using the CMD
     - Using a IDE (after some testing, PyCharm is my IDE of choice)
