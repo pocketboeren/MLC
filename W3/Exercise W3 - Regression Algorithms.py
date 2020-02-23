@@ -19,8 +19,8 @@ boston = datasets.load_boston()
 # 1. Preliminary data analysis
 # 2. Linear regression
 # 3. Ridge regression
-# 4. Random Forest
-# 5. Support Vector Regression
+# 4. Support Vector Regression
+# 5. Regression Tree
 
 
 # 1. Preliminary data analysis
@@ -183,7 +183,7 @@ print(reg_all_sm.summary())
 # From the output we observe that some variables are not statistically significant at a 5% level
 # For further analysis we might want to remove them to get a more parsimonious model
 # We can consider the Ridge regression as well, wich penalizes additional parameters
-# ZN, INDUS, AGE, TAX
+# ZN, INDUS, AGE
 
 score_all = reg_all.score(X_test, y_test)
 y_pred_all = reg_all.predict(X_test)
@@ -212,9 +212,9 @@ print('R^2: {}'.format(score_ridge))
 print('RMSE: {}'.format(rmse_ridge))
 
 # If we remove the features that were inconsistent
-# ZN, INDUS, AGE, TAX
-X_train_lm = X_train.copy().drop(['ZN', 'INDUS', 'AGE', 'TAX'], axis=1)
-X_test_lm = X_test.copy().drop(['ZN', 'INDUS', 'AGE', 'TAX'], axis=1)
+# ZN, INDUS, AGE
+X_train_lm = X_train.copy().drop(['ZN', 'INDUS', 'AGE'], axis=1)
+X_test_lm = X_test.copy().drop(['ZN', 'INDUS', 'AGE'], axis=1)
 reg_ridge_lm = Ridge(alpha=1)
 reg_ridge_lm.fit(X_train_lm, y_train)
 y_pred_ridge_lm = reg_ridge_lm.predict(X_test_lm)
@@ -230,11 +230,11 @@ print('RMSE: {}'.format(rmse_ridge_lm))
 
 # In the same way can explore some other regression algorithms, like Support Vector Regression or Random Forest
 # SVR: Support Vector Regression
-clf = svm.SVR()
+reg_svr = svm.SVR()
 # There are three implementations in sklearn: SVR, NuSVR and LinearSVR. We use the first as an example.
-clf.fit(X_train, y_train.values.ravel())
-score_svr = clf.score(X_test, y_test)
-y_pred_svr = clf.predict(X_test)
+reg_svr.fit(X_train, y_train.values.ravel())
+score_svr = reg_svr.score(X_test, y_test)
+y_pred_svr = reg_svr.predict(X_test)
 rmse_svr_all = np.sqrt(mean_squared_error(y_test, y_pred_svr))
 print('For the SVR regression model with all the features we have:')
 print('R^2: {}'.format(score_svr))
@@ -269,6 +269,8 @@ plt.figure()
 plt.scatter(X_train['RM'].values, y_train, color='grey')
 plt.plot(ps_lin, y_pred_plot, color='blue')
 plt.plot(ps_lin, y_pred_overfit_plot, color='red')
+plt.xlabel('RM (average number of rooms)')
+plt.ylabel('House price (x $1,000)')
 plt.title('Decision Tree Regression Results', fontsize=16)
 plt.legend(['Depth = 3', 'Depth = 20', 'Train data'])
 
