@@ -39,7 +39,6 @@ df_y = pd.DataFrame(boston.target, columns=['PRICE'])
 df_y.info()
 df_y.describe()
 
-
 df_y.hist(bins=50)
 plt.grid(axis='both', linestyle='dotted')
 plt.title('Distribution of house prices in Boston')
