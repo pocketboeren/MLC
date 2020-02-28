@@ -118,8 +118,6 @@ linear_reg.fit(X_train['RM'].values.reshape(-1, 1), y_train)
 ps_lin = np.linspace(min(X_train['RM']), max(X_train['RM'])).reshape(-1, 1)
 plot_linear_line = linear_reg.predict(ps_lin)
 
-
-
 # variables are just pointer to an object
 # Why copy: to avoid chain indexing! Learn more:
 # https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#indexing-view-versus-copy

@@ -4,6 +4,7 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.naive_bayes import GaussianNB
 from sklearn import datasets
 from sklearn import svm
+import seaborn as sns
 import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
@@ -30,6 +31,9 @@ print(iris.data.shape)
 df_X = pd.DataFrame(iris.data, columns=iris.feature_names)
 df_y = pd.DataFrame(iris.target, columns=['Class'])
 
+# sns.set(style="darkgrid")
+# ax = sns.countplot(x="Class", data=df_y)
+
 # Some summary statistics:
 df_y.info()
 df_y.describe()
@@ -52,6 +56,7 @@ for i, feature in enumerate(df_X.columns):
         ax1[r, c].set_ylabel('Frequency')
 fig1.legend(iris.target_names, bbox_to_anchor=(0.77, 0.10), ncol=3)
 fig1.subplots_adjust(bottom=0.18)
+
 
 # Sepal sizes
 plt.figure(figsize=(5, 5))
