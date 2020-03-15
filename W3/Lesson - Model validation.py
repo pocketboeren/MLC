@@ -28,7 +28,7 @@ y_pred = logreg.predict(X_test)
 print(confusion_matrix(y_test, y_pred))
 print(classification_report(y_test, y_pred))
 
-y_pred_prob = logreg.predict_proba(X_test)[:,1]
+y_pred_prob = logreg.predict_proba(X_test)[:, 1]
 fpr, tpr, thresholds = roc_curve(y_test, y_pred_prob)
 plt.plot([0, 1], [0, 1], 'k--')
 plt.plot(fpr, tpr)
@@ -37,8 +37,8 @@ plt.ylabel('True Positive Rate')
 plt.title('ROC Curve')
 plt.show()
 
-y_pred_prob = logreg.predict_proba(X_test)[:,1]
+y_pred_prob = logreg.predict_proba(X_test)[:, 1]
 print("AUC: {}".format(roc_auc_score(y_test, y_pred_prob)))
-cv_auc = cross_val_score(logreg, X, y , cv=5, scoring='roc_auc')
+cv_auc = cross_val_score(logreg, X, y, cv=5, scoring='roc_auc')
 print("AUC scores computed using 5-fold cross-validation: {}".format(cv_auc))
 
